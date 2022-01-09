@@ -1,0 +1,29 @@
+INVESTIGAR SOBRE ACCESSCONTROL: permite tener un control de accesos y permisos mas avanzado que nuestro checkRoles
+
+cuando se crea un customer se deberia disparar las validaciones del users(password)
+
+cuando el usuario inicie y se cree el jwt, si desea crear una orden no debe enviar el customerId, leerlo desde el payload del token //LISTO
+
+del get order by id sacar el password
+
+arreglar la ruta addItem //LISTO
+
+con respecto al token: (Manejo de la autenticación desde el cliente)
+    
+    //cliente
+    - guardarlo en las cookies o localstorage
+    - enviar en el header 'bearer token'
+    - validar permisos, si es admin se muestra unos botones si no, no se muestra, etc
+
+    //backend:
+    - ponerle un fecha de expiracion al token
+    - cuando se envie el token al cliente, tambien enviarle un refreshToken, cuando expire el token que se consuma la url /api/auth/refreshToken 
+      se verifica el refreshToken y se le crea un nuevo token y un nuevo refreshToken. y asi sucesivamente.
+    
+
+se deben tener 3 firmas diferentes para firmar los tokens:
+- 1 para acceso a recursos
+- 1 para refrescar la sesión (refresh token)
+- 1 para recovery
+
+no se debe retornar el campo recoveryToken en auth/login
